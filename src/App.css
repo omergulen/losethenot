@@ -1,10 +1,7 @@
-.App {
-  text-align: center;
-}
+/* @import url(https://fonts.googleapis.com/css?family=Pacifico); */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #282c34;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -14,14 +11,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 30vh;
+  padding-top: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(20px + 2vmin);
+  color: #D80027;
+}
+
+.header-title {
+  font-family: Pacifico;
+  width: 100%;
 }
 
 .App-link {
@@ -32,7 +34,48 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+.footer {
+  padding: 24px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-logo {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .main-logo {
+    display: block;
+    height: 150px;
+    width: 150px;
+  }
+
+  .main-logo-wrapper {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .main-logo-wrapper {
+    flex-direction: column;
+    height: 300px;
+  }
+
+  .main-logo-wrapper .main-logo:first-child {
+    display: none;
+  }
+}
+
