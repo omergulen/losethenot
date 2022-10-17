@@ -129,6 +129,11 @@ function App() {
     });
   }, [colorMode])
 
+  const result = useMemo(() => (map[word] || map[placeholder]), [word, placeholder])
+  console.log('placeholder: ', placeholder);
+  console.log('word: ', word);
+  console.log('result: ', result);
+
   const handleOnChange = (_, selection) => {
     if (selection != null) {
       setWord(selection);
@@ -138,10 +143,9 @@ function App() {
     }
   };
 
-  const result = useMemo(() => (map[word] || map[placeholder]), [word, placeholder])
-  console.log('placeholder: ', placeholder);
-  console.log('word: ', word);
-  console.log('result: ', result);
+  const handleResultClick = () => {
+    window.open(`https://www.dictionary.com/browse/${result}`, '_blank').focus();
+  };
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -219,6 +223,7 @@ function App() {
                 <p className="text-center col-span-1  text-xl sm:text-4xl  lg:text-5xl xl:text-6xl font-bold">=</p>
                 <div className="text-center w-96 col-span-4">
                   <p id="output"
+                    onClick={handleResultClick}
                     className="cursor-pointer text-center text-xl sm:text-4xl  lg:text-5xl xl:text-6xl font-bold text-gray-500 font-serif">{result}</p>
                 </div>
 
