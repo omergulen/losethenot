@@ -105,6 +105,7 @@ function App() {
   };
   const options = Object.keys(map);
   const [placeholder, setPlaceholder] = useState(options[Math.floor(Math.random() * options.length)]);
+  const [inputValue, setInputValue] = useState("");
 
   const darkTheme = useMemo(() => {
     return createTheme({
@@ -137,11 +138,19 @@ function App() {
   const handleOnChange = (_, selection) => {
     if (selection != null) {
       setWord(selection);
+      setInputValue(selection);
     } else {
       setWord(null);
+      setInputValue("");
       setPlaceholder(options[Math.floor(Math.random() * options.length)]);
     }
   };
+
+  const handleInputChange = (event, value) => {
+    if (event?.type === "change") {
+     setInputValue(value);
+    }
+   };
 
   const handleResultClick = () => {
     window.open(`https://www.dictionary.com/browse/${result}`, '_blank').focus();
@@ -204,7 +213,9 @@ function App() {
                   getOptionLabel={(option) => option}
                   clearOnEscape
                   onChange={handleOnChange}
+                  onInputChange={handleInputChange}
                   value={word}
+                  inputValue={inputValue}
                   renderInput={(params) => {
                     // delete params.inputProps.className;
                     return (
